@@ -22,8 +22,8 @@ test("Checkbox disables button on first click and enable on second click", () =>
   });
 
   fireEvent.click(checkBox);
-  expect(submitButton).toBeDisabled();
+  expect(submitButton).toBeEnabled();
 
   fireEvent.click(checkBox);
-  expect(submitButton).toBeEnabled();
+  expect(submitButton).toBeDisabled();
 });
