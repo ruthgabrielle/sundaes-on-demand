@@ -28,3 +28,22 @@ test("Checkbox disables button on first click and enable on second click", () =>
   userEvent.click(checkBox);
   expect(submitButton).toBeDisabled();
 });
+
+test("Popover responds to hover", () => {
+  render(<SummaryForm />);
+
+  //popover starts out hidden
+  const nullPopover = screen.queryByText(
+    /no ice cream will actually be delivred/i
+  );
+  expect(nullPopover).not.toBeInTheDocument();
+
+  //popover appears upon mouseover of checkbox label
+  const termsAndConditions = screen.getByText(/terms and conditions/i);
+  userEvent.hover(termsAndConditions);
+
+  const popover = screen.getByText(/no ice cream will actually be delivred/i);
+  expect(popover).toBeInTheDocument();
+
+  //popover dispappears when we mouse out
+});
